@@ -1,2 +1,5 @@
-export const mainBlack: string = '#000'
-export const mainWhite: string = '#FFF'
+export const colors = {
+    mainBlack: '#000',
+    mainWhite : '#FFF'
+}
+
