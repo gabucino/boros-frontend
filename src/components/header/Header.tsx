@@ -5,7 +5,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons'
 import { faWineGlassAlt } from '@fortawesome/free-solid-svg-icons'
 
-const StyledWrapper = styled.div`
+const MainHeader = styled.div`
   position: fixed;
   z-index: 10;
   top: 0;
@@ -75,7 +75,7 @@ const Header: React.FC = () => {
 
   return (
     <Fragment>
-      <StyledWrapper>
+      <MainHeader>
         <ActionButton>
           <FontAwesomeIcon icon={faBars} style={{ color: '#FFF' }} size="3x" />
         </ActionButton>
@@ -90,7 +90,7 @@ const Header: React.FC = () => {
             size="3x"
           />
         </ActionButton>
-      </StyledWrapper>
+      </MainHeader>
       <PromoLine>
         <p>
           Free Economy shipping over $100 | Due to COVID-19, some orders may
