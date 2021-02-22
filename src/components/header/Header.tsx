@@ -60,7 +60,7 @@ const Title = styled.a`
 export const PromoLine = styled.div`
   width: 100%;
   border-top: 1px solid #2c2c2d;
-  height: 3rem;
+  min-height: 3rem;
   background-color: ${(props) => props.theme.colors.mainBlack};
   margin-top: 5rem;
   color: ${(props) => props.theme.colors.mainWhite};
