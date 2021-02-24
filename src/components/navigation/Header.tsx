@@ -1,9 +1,13 @@
-import React, {  Fragment } from 'react'
+import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons'
 import { faWineGlassAlt } from '@fortawesome/free-solid-svg-icons'
+
+interface HeaderProps {
+  toggleSidebar: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
+}
 
 const MainHeader = styled.div`
   position: fixed;
@@ -27,6 +31,7 @@ const ActionButton = styled.div`
   align-items: center;
   margin: 0;
   padding: 0 1rem;
+  cursor: pointer;
 `
 
 const TitleContainer = styled.div`
@@ -41,7 +46,6 @@ const TitleContainer = styled.div`
 const Title = styled.a`
   //h1 not in the middle because of font type
   font-family: 'Indie Flower';
-  /* font-size: rem; */
   display: flex;
   position: relative;
   z-index: 20;
@@ -64,23 +68,23 @@ export const PromoLine = styled.div`
   background-color: ${(props) => props.theme.colors.mainBlack};
   margin-top: 5rem;
   color: ${(props) => props.theme.colors.mainWhite};
-font-size: 1.2rem;
-display: flex;
-align-items: center;
-justify-content: center;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
-const Header: React.FC = () => {
+const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
   // const [elephant, setElephant] = useState<string | boolean | null>('yes')
 
   return (
     <Fragment>
       <MainHeader>
-        <ActionButton>
+        <ActionButton onClick={toggleSidebar}>
           <FontAwesomeIcon icon={faBars} style={{ color: '#FFF' }} size="3x" />
         </ActionButton>
         <TitleContainer>
-          <FontAwesomeIcon icon={faWineGlassAlt} size="2x"/>
+          <FontAwesomeIcon icon={faWineGlassAlt} size="2x" />
           <Title>Boros</Title>
         </TitleContainer>
         <ActionButton>
