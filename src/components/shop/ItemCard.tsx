@@ -9,6 +9,7 @@ export interface ItemCardProps {
 }
 
 const Wrapper = styled.article`
+  float: left;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,16 +17,20 @@ const Wrapper = styled.article`
   padding: 3rem 0;
   font-family: 'Roboto', sans-serif;
   max-height: 60vh;
+  /* width: 100%; */
   width: 100%;
+  margin: auto;
+  @media (min-width: 768px) {
+    width: 50%;
+  }
 `
 
 const Image = styled.div<{ src?: string }>`
   width: 100%;
   min-height: 40rem;
-  background: url(${props => props.src || NoPhoto}) no-repeat center;
+  background: url(${(props) => props.src || NoPhoto}) no-repeat center;
   background-size: contain;
 `
-
 
 const ItemName = styled.h4`
   font-weight: 400;

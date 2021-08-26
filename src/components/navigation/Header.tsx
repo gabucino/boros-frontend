@@ -1,7 +1,11 @@
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import {faSearch} from '@fortawesome/free-solid-svg-icons'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
+import {faUser} from '@fortawesome/free-solid-svg-icons'
+
 import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons'
 import { faWineGlassAlt } from '@fortawesome/free-solid-svg-icons'
 
@@ -14,16 +18,25 @@ const MainHeader = styled.div`
   z-index: 10;
   top: 0;
   background-color: ${(props) => props.theme.colors.mainBlack};
-  transition: all 0.25s ease-out;
   height: 5rem;
   width: 100%;
   display: flex;
   justify-content: space-between;
   margin: 0;
   color: ${(props) => props.theme.colors.mainWhite};
+  @media (min-width: 992px) {
+    padding: 0 2rem;
+    height: 5.8rem;
+  }
 `
 
-const ActionButton = styled.div`
+const DesktopIconContainer = styled.div`
+display: flex;
+justify-content: space-evenly;
+align-items: center;
+`
+
+const ActionButton = styled.div<{ isMenu?: boolean, isBasket?: boolean }>`
   width: 5rem;
   height: 5rem;
   display: flex;
@@ -32,6 +45,11 @@ const ActionButton = styled.div`
   margin: 0;
   padding: 0 1rem;
   cursor: pointer;
+  @media (min-width: 992px) {
+    display: ${(props) => props.isMenu && "none"};
+    margin-right: ${(props) => props.isBasket && "7.5%"};
+
+  }
 `
 
 const TitleContainer = styled.div`
@@ -42,6 +60,10 @@ const TitleContainer = styled.div`
   width: 100%;
   height: 100%;
   margin: 0;
+  @media (min-width: 992px) {
+    justify-content: flex-start;
+    margin-left: 7.5%;
+  }
 `
 const Title = styled.a`
   //h1 not in the middle because of font type
@@ -59,6 +81,10 @@ const Title = styled.a`
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
+  @media (min-width: 992px) {
+    font-size: 3.1rem;
+
+  }
 `
 
 export const PromoLine = styled.div`
@@ -80,14 +106,32 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
   return (
     <Fragment>
       <MainHeader>
-        <ActionButton onClick={toggleSidebar}>
+        <ActionButton isMenu onClick={toggleSidebar}>
           <FontAwesomeIcon icon={faBars} style={{ color: '#FFF' }} size="3x" />
         </ActionButton>
         <TitleContainer>
           <FontAwesomeIcon icon={faWineGlassAlt} size="2x" />
           <Title>Boros</Title>
         </TitleContainer>
-        <ActionButton>
+        <DesktopIconContainer>
+        <ActionButton >
+          <FontAwesomeIcon
+            icon={faUser}
+            style={{ color: '#FFF' }}
+            size="3x"
+          />
+                  </ActionButton>
+
+        <ActionButton >
+          <FontAwesomeIcon
+            icon={faSearch}
+            style={{ color: '#FFF' }}
+            size="3x"
+          />
+        </ActionButton>
+        </DesktopIconContainer>
+
+        <ActionButton isBasket>
           <FontAwesomeIcon
             icon={faShoppingBasket}
             style={{ color: '#FFF' }}

@@ -1,26 +1,31 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
+import { filterContainer } from "../../styles";
 
 interface CategoryButtonProps {
-  category: string,
-  isLast?: boolean;
+  category: string;
+  // isLast?: boolean;
 }
 
+// interface Props {
+//   isLast?: boolean;
+// }
 
-const StyledButton = styled.button<{isLast?: boolean}>`
+const StyledButton = styled(filterContainer)`
   width: 100%;
-  height: 5rem;
-  background-color:  '#ededed';
-  color: ${(props) => props.theme.colors.mainBlack};
+  color: ${(props) => props.theme.colors.lightRed};
   cursor: pointer;
-  border: none;
   text-transform: uppercase;
-  margin-bottom: ${props => props.isLast? 0 : '1rem'};
-`
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+`;
 
-const CategoryButton: React.SFC<CategoryButtonProps> = ({ category, isLast  }) => {
+const CategoryButton: React.SFC<CategoryButtonProps> = ({
+  category,
+  // isLast,
+}) => {
+  return <StyledButton >{category}</StyledButton>;
+};
 
-  return <StyledButton isLast={isLast}>{category}</StyledButton>
-}
-
-export default CategoryButton
+export default CategoryButton;

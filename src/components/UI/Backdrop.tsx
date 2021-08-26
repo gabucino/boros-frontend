@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 export interface BackdropProps {
-    closeSidebar: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
+    closeSidebar: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void,
 }
 
 const StyledBackdrop = styled.div`
